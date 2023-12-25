@@ -1,7 +1,14 @@
 
 const { MongoClient } = require('mongodb');
+const dotenv = require('dotenv');
+const path = require('path');
 
-const uri = 'mongodb+srv://startup-dir:stdir123@cluster0.omz3ic1.mongodb.net/';
+
+const envPath = path.resolve(__dirname, 'config.env');
+
+dotenv.config({ path: envPath });
+
+const uri = process.env.DATABASE;
 const client = new MongoClient(uri);
 
 let database;
